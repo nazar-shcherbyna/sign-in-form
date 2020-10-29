@@ -51,10 +51,6 @@ body {
     padding: 50px 70px;
 }
 
-.form {
-
-}
-
 .form__group {
     margin: 15px 0;
 }
@@ -68,6 +64,7 @@ body {
     font-size: 1.6rem;
     font-weight: 700;
     margin-bottom: 10px;
+    position: relative;
 }
 
 .form__input {
@@ -83,4 +80,141 @@ body {
 
 .form__input:focus {
     border-color: rgba(255,255,255, 1);
+}
+
+.form__checkbox {
+    /* width: 16px;
+    height: 16px;
+    vertical-align: middle; */
+    /* display: none; */
+    visibility: hidden;
+}
+
+
+.form__label--checkbox {
+    font-size: 1.3rem;
+    padding-left: 23px;
+}
+
+.form__label--checkbox::before {
+    content: '✓';
+    width: 16px;
+    height: 16px;
+    background-color: #23ae92;
+    color: #23ae92;
+    display: inline-block;
+    position: absolute;
+    left: 0;
+    top: 50%;
+    transform: translate(0,-50%);
+    text-align: center;
+    transition: all .15s ease-in-out;
+
+}
+
+.form__checkbox:checked + .form__label--checkbox::before {
+    color: #fff;
+} 
+
+.form__btns {
+    margin: 40px 0 30px;
+}
+
+.form__btn {
+    width: 100%;
+    padding: 15px;
+    background-color: #23ae92;
+    color: #fbf6e4;
+    outline: none;
+    border: 2px solid #23ae92;
+    font-size: 1.8rem;
+    font-weight: 700;
+}
+
+.form__btn:hover,
+.form__btn:focus,
+.form__btn:active {
+    background-color: transparent;
+    border-color: 2px solid rgba(255,255,255, .5);
+}    
+
+.modal__links {
+    display: flex;
+    justify-content: space-between;
+}
+
+.modal__link {
+    text-decoration: none;
+    color: #b9b9cc;
+    font-size: 1.3rem;
+    border-bottom: 1px solid rgba(185, 185, 204, .4);
+    padding: 3px 0;
+    display: inline-block;
+}
+
+.modal__link:hover,
+.modal__link:focus,
+.modal__link:active {
+    border-color: #fff;
+    color: #fff;
+}
+
+.tabs {
+    display: flex;
+    overflow: hidden;
+}
+
+.tabs .form {
+    flex: 0 0 100%;
+    transition: all .3s ease-in-out, opacity .8s ease-in-out;
+}
+
+.form[name="join-us"] {
+    opacity: 0;
+}
+
+.form[name="sign-in"] {
+    opacity: 1;
+}
+
+#sign-in:checked ~ .tabs .form {/* Тильда находит всех соседей, + находит ближайших соседей */
+    transform: translate(0, 0);
+}
+
+#join-us:checked ~ .tabs .form {
+    transform: translate(-100%, 0);
+}
+
+#join-us:checked ~ .tabs .form[name="join-us"] {
+    opacity: 1;
+}
+
+#join-us:checked ~ .tabs .form[name="sign-in"] {
+    opacity: 0;
+}
+
+[name="tab"] {
+    display: none;
+}
+
+[name="tab"] + label {
+    font-weight: 700;
+    font-size: 1.8rem;
+    margin: 0 15px 25px 0;
+    display: inline-block;
+    border-bottom: 2px solid transparent;
+    transition: all .3s ease-in-out;
+    padding-bottom: 5px;
+    opacity: .6;
+    cursor: pointer;
+}
+
+[name="tab"]:checked + label {
+    border-color: #e66a64;
+    opacity: 1;
+}
+
+[name="tab"] + label:hover,
+[name="tab"] + label:focus {
+    opacity: 1;
 }
